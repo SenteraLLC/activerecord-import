@@ -108,6 +108,7 @@ module ActiveRecord::Import # :nodoc:
               raise "The :validate callback chain contains an 'around' callback, which is unsupported" unless runner.final?
               runner.invoke_before(env)
               runner.invoke_after(env)
+              true
             end
           elsif @validate_callbacks.method(:compile).arity == 0 # ActiveRecord = 4.0
             model.instance_eval @validate_callbacks.compile
